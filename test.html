@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="cs" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprilia | Be a Racer - Oficiální zážitek</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { 
+                display: ["'Syne'", "sans-serif"], 
+                body: ["'Plus Jakarta Sans'", "sans-serif"] 
+            },
+            colors: { 
+                accent: '#E30613', // Klasická Aprilia červená
+                dark: '#0A0A0A'    // Deep racing black
+            }
+          }
+        }
+      }
+    </script>
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; font-family: 'Plus Jakarta Sans', sans-serif; }
+      body { background-color: #0A0A0A; color: #ffffff; }
+      
+      /* Vlastní scrollbar */
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-thumb { background: #E30613; border-radius: 3px; }
+      
+      /* Reveal animace při scrollu */
+      .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
+      .reveal.visible { opacity: 1; transform: none; }
+      
+      /* Hover zoom na obrázkách */
+      .img-zoom { overflow: hidden; border-radius: 1rem; }
+      .img-zoom img { transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+      .img-zoom:hover img { transform: scale(1.08); }
+
+      .text-stroke {
+        -webkit-text-stroke: 1px rgba(255,255,255,0.3);
+        color: transparent;
+      }
+      
+      .gradient-overlay {
+        background: linear-gradient(to bottom, rgba(10,10,10,0.4) 0%, rgba(10,10,10,0.9) 100%);
+      }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 px-6 py-4 flex justify-between items-center bg-transparent">
+        <a href="#domu" class="text-2xl font-display font-extrabold tracking-tighter text-white">
+            APRILIA<span class="text-accent">.</span>
+        </a>
+        
+        <div class="hidden md:flex space-x-8 items-center font-medium text-sm uppercase tracking-widest">
+            <a href="#domu" class="hover:text-accent transition-colors">Domů</a>
+            <a href="#o-nas" class="hover:text-accent transition-colors">O nás</a>
+            <a href="#sluzby" class="hover:text-accent transition-colors">Stroje</a>
+            <a href="#galerie" class="hover:text-accent transition-colors">Galerie</a>
+            <a href="#kontakt" class="px-5 py-2 bg-accent text-white rounded-full hover:bg-red-700 transition-all">Kontakt</a>
+        </div>
+
+        <button id="menu-btn" class="md:hidden text-white">
+            <i data-lucide="menu"></i>
+        </button>
+
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-dark border-b border-white/10 flex flex-col p-6 space-y-4 text-center md:hidden">
+            <a href="#domu">Domů</a>
+            <a href="#o-nas">O nás</a>
+            <a href="#sluzby">Stroje</a>
+            <a href="#galerie">Galerie</a>
+            <a href="#kontakt" class="text-accent">Kontakt</a>
+        </div>
+    </nav>
+
+    <section id="domu" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://instagram.fdet3-1.fna.fbcdn.net/v/t39.30808-6/497854232_1123393729826336_8805706116398783650_n.jpg?stp=dst-jpg_e15_fr_p1080x1080_tt6&_nc_ht=instagram.fdet3-1.fna.fbcdn.net&_nc_cat=108&_nc_oc=Q6cZ2gEs1tfbRH2AM2aliYxAX7BxFrMc01K5DTkp0LLK9wMKJSZ5J90HuMSn0Tdk4Gji9Og&_nc_ohc=9ELxqB60VMkQ7kNvwF-0ufa&_nc_gid=1f0EQ9pVc7R_Oy-2OYfqMg&edm=AOQ1c0wAAAAA&ccb=7-5&ig_cache_key=MzYzMzE0NTY4OTUyOTI0MzA3Ng%3D%3D.3-ccb7-5&oh=00_Af3Enxb-1dfBf1dMhjTDB5BFE5RYXMa5LR7CcYR_LLGGnw&oe=69E42220&_nc_sid=8b3546" 
+                 class="w-full h-full object-cover" alt="Aprilia Racing" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1558981403-c5f91cbba527?auto=format&fit=crop&q=80&w=1920'">
+            <div class="absolute inset-0 gradient-overlay"></div>
+        </div>
+
+        <div class="relative z-10 container mx-auto px-6 text-center reveal">
+            <span class="inline-block px-4 py-1 mb-6 border border-accent/50 rounded-full text-accent text-xs tracking-[0.3em] uppercase font-bold bg-accent/10 backdrop-blur-sm">
+                ⭐ Sleduje nás 1242.3k lidí na Instagramu
+            </span>
+            <h1 class="text-5xl md:text-7xl lg:text-9xl font-display font-extrabold leading-[0.9] tracking-tighter mb-8">
+                DESIGNED FOR <br><span class="text-stroke">THE TRACK.</span>
+            </h1>
+            <p class="max-w-2xl mx-auto text-lg md:text-xl text-gray-300 mb-10 font-light">
+                Závodní DNA v každém detailu. Překonávej limity s technologií zrozenou v boxech MotoGP.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="#sluzby" class="group relative px-8 py-4 bg-accent text-white font-bold rounded-xl overflow-hidden transition-all hover:scale-105 active:scale-95">
+                    <span class="relative z-10">PROZKOUMAT STROJE</span>
+                </a>
+                <a href="#galerie" class="px-8 py-4 border border-white/20 hover:border-white/50 text-white font-bold rounded-xl transition-all">
+                    GALERIE ADRENALINU
+                </a>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+            <i data-lucide="chevron-down" class="text-white/30"></i>
+        </div>
+    </section>
+
+    <section id="o-nas" class="py-24 md:py-32 container mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+            <div class="reveal">
+                <h2 class="text-4xl md:text-5xl font-display font-bold mb-8 leading-tight">
+                    ZÁVODĚNÍ MÁME <br><span class="text-accent underline decoration-4 underline-offset-8">V KRVI.</span>
+                </h2>
+                <div class="space-y-6 text-gray-400 leading-relaxed text-lg">
+                    <p>
+                        Aprilia není jen značka, je to manifest rychlosti. Naše historie je napsána na asfaltu nejprestižnějších okruhů světa. Každý model, od brutální RSV4 Factory až po agilní Tuono 457, nese odkaz šampionů MotoGP.
+                    </p>
+                    <p>
+                        Naším cílem je přenést ten čistý, nefiltrovaný pocit z vítězství přímo k vám. Proto vyvíjíme technologie, které posouvají hranice fyziky a ergonomie. Jsme tu pro ty, kteří se nespokojí s průměrem.
+                    </p>
+                    <p>
+                        Ať už krotíte městský chaos na SR GT 400 nebo dobýváte pouštní duny v sedle Tuareg Rally, s Aprilií se každý metr stává vaším hřištěm. #BeARacer není jen hashtag, je to životní styl.
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 gap-8 mt-12">
+                    <div>
+                        <div class="text-4xl font-display font-bold text-white mb-1">294</div>
+                        <div class="text-xs uppercase tracking-widest text-accent">Vítězství v GP</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-display font-bold text-white mb-1">54</div>
+                        <div class="text-xs uppercase tracking-widest text-accent">Světových titulů</div>
+                    </div>
+                </div>
+            </div>
+            <div class="reveal relative">
+                <div class="img-zoom rounded-3xl shadow-2xl shadow-accent/20">
+                    <img src="https://instagram.fdet3-1.fna.fbcdn.net/v/t39.30808-6/496670133_1122641386568237_183738038507231953_n.jpg?stp=dst-jpg_e15_fr_p1080x1080_tt6&_nc_ht=instagram.fdet3-1.fna.fbcdn.net&_nc_cat=105&_nc_oc=Q6cZ2gEs1tfbRH2AM2aliYxAX7BxFrMc01K5DTkp0LLK9wMKJSZ5J90HuMSn0Tdk4Gji9Og&_nc_ohc=xjL7rfyMCkgQ7kNvwGn85GZ&_nc_gid=1f0EQ9pVc7R_Oy-2OYfqMg&edm=AOQ1c0wAAAAA&ccb=7-5&ig_cache_key=MzYzMjM4MjY3MTYyNzI2NzM4OQ%3D%3D.3-ccb7-5&oh=00_Af1MtmTnOOSs--SsF7gT7c0Zj_WJ8J5QtWZ07HnjVDTUng&oe=69E43231&_nc_sid=8b3546" 
+                         alt="Aprilia Detail" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1591637333184-19aa84b3e01f?auto=format&fit=crop&q=80&w=800'">
+                </div>
+                <div class="absolute -bottom-6 -left-6 bg-accent p-8 rounded-2xl hidden lg:block">
+                    <i data-lucide="trophy" class="w-12 h-12 text-white"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sluzby" class="py-24 md:py-32 bg-neutral-900/50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20 reveal">
+                <h2 class="text-4xl md:text-5xl font-display font-bold mb-4">AKTUÁLNÍ <span class="text-accent">LINE-UP</span></h2>
+                <p class="text-gray-400 max-w-xl mx-auto">Vyberte si svůj nástroj pro dobývání silnic i okruhů.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="reveal bg-dark border border-white/5 p-8 rounded-3xl hover:border-accent/50 transition-all group">
+                    <div class="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center text-accent mb-6 group-hover:bg-accent group-hover:text-white transition-colors">
+                        <i data-lucide="zap"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">RSV4 Factory</h3>
+                    <p class="text-gray-400 mb-6">Bezkonkurenční výkon a aerodynamika odvozená přímo z MotoGP. Stroj pro ty, kteří chtějí dominovat na trati.</p>
+                    <a href="#kontakt" class="text-accent font-bold flex items-center gap-2 hover:gap-4 transition-all uppercase text-xs tracking-widest">
+                        Zjistit více <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+                <div class="reveal bg-dark border border-white/5 p-8 rounded-3xl hover:border-accent/50 transition-all group" style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center text-accent mb-6 group-hover:bg-accent group-hover:text-white transition-colors">
+                        <i data-lucide="mountain"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Tuareg Rally</h3>
+                    <p class="text-gray-400 mb-6">Dobývejte jakýkoliv terén bez limitů. Výkon hodný skutečné rallyové královny s dobrodružným duchem.</p>
+                    <a href="#kontakt" class="text-accent font-bold flex items-center gap-2 hover:gap-4 transition-all uppercase text-xs tracking-widest">
+                        Zjistit více <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+                <div class="reveal bg-dark border border-white/5 p-8 rounded-3xl hover:border-accent/50 transition-all group" style="transition-delay: 200ms;">
+                    <div class="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center text-accent mb-6 group-hover:bg-accent group-hover:text-white transition-colors">
+                        <i data-lucide="navigation"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">SR GT 400</h3>
+                    <p class="text-gray-400 mb-6">Město není limit, je to vaše hřiště. Nejlepší poměr výkonu a hmotnosti ve své třídě pro každodenní jízdu.</p>
+                    <a href="#kontakt" class="text-accent font-bold flex items-center gap-2 hover:gap-4 transition-all uppercase text-xs tracking-widest">
+                        Zjistit více <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center reveal">
+                <a href="#kontakt" class="inline-block border-2 border-accent text-accent px-10 py-4 rounded-xl font-bold hover:bg-accent hover:text-white transition-all">
+                    DOMLUVIT TESTOVACÍ JÍZDU
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="galerie" class="py-24 md:py-32 container mx-auto px-6">
+        <div class="text-center mb-16 reveal">
+            <h2 class="text-4xl font-display font-bold">#BEARACER <span class="text-accent">GALLERY</span></h2>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-6">
+            <div class="img-zoom reveal h-64 md:h-96">
+                <img src="https://instagram.fdet3-1.fna.fbcdn.net/v/t39.30808-6/492013349_1104909795008063_7768609112686272858_n.jpg?stp=dst-jpg_e15_fr_p1080x1080_tt6&_nc_ht=instagram.fdet3-1.fna.fbcdn.net&_nc_cat=111&_nc_oc=Q6cZ2gEs1tfbRH2AM2aliYxAX7BxFrMc01K5DTkp0LLK9wMKJSZ5J90HuMSn0Tdk4Gji9Og&_nc_ohc=VRAfaHr2_MwQ7kNvwFfJfR0&_nc_gid=1f0EQ9pVc7R_Oy-2OYfqMg&edm=AOQ1c0wAAAAA&ccb=7-5&ig_cache_key=MzYxNjI5MTU2ODM5ODQwOTEzNQ%3D%3D.3-ccb7-5&oh=00_Af1Jh8C6OCiitPKBT1YxmI5eLKNUmTUXNSU0X4fUAwJtFQ&oe=69E43C8B&_nc_sid=8b3546" class="w-full h-full object-cover" alt="Race 3">
+            </div>
+            <div class="img-zoom reveal h-64 md:h-[30rem] md:row-span-2">
+                <img src="https://instagram.fdet3-1.fna.fbcdn.net/v/t51.71878-15/669681664_1460901039162727_6103965057519239861_n.jpg?stp=dst-jpg_e15_tt6&_nc_ht=instagram.fdet3-1.fna.fbcdn.net&_nc_cat=107&_nc_oc=Q6cZ2gEs1tfbRH2AM2aliYxAX7BxFrMc01K5DTkp0LLK9wMKJSZ5J90HuMSn0Tdk4Gji9Og&_nc_ohc=o7t8RPDKNQgQ7kNvwFuoBXu&_nc_gid=1f0EQ9pVc7R_Oy-2OYfqMg&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_Af2l_BNBdMqPjEJAmxcbcIrgs7LYfAQSSElfWLv94DNtaA&oe=69E41982&_nc_sid=8b3546" class="w-full h-full object-cover" alt="Race 4">
+            </div>
+            <div class="img-zoom reveal h-64 md:h-80">
+                <img src="https://instagram.fdet3-1.fna.fbcdn.net/v/t51.82787-15/669399119_18576340246037274_1255980620455755740_n.jpg?stp=dst-jpg_e15_tt6&_nc_ht=instagram.fdet3-1.fna.fbcdn.net&_nc_cat=106&_nc_oc=Q6cZ2gEs1tfbRH2AM2aliYxAX7BxFrMc01K5DTkp0LLK9wMKJSZ5J90HuMSn0Tdk4Gji9Og&_nc_ohc=SyQGmak1nQQQ7kNvwEvqVGf&_nc_gid=1f0EQ9pVc7R_Oy-2OYfqMg&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_Af04PiQ6My8LPB1EobX3KlkJcolFVy7_U8VMM565lm4YgA&oe=69E416C7&_nc_sid=8b3546" class="w-full h-full object-cover" alt="Race 5">
+            </div>
+            <div class="img-zoom reveal h-64 md:h-64">
+                <img src="https://instagram.fdet3-1.fna.fbcdn.net/v/t51.82787-15/658905217_18575620522037274_6788279333708906049_n.jpg?stp=dst-jpg_e15_fr_p1080x1080_tt6&_nc_ht=instagram.fdet3-1.fna.fbcdn.net&_nc_cat=106&_nc_oc=Q6cZ2gEs1tfbRH2AM2aliYxAX7BxFrMc01K5DTkp0LLK9wMKJSZ5J90HuMSn0Tdk4Gji9Og&_nc_ohc=d90_haAqB5QQ7kNvwG6xh5B&_nc_gid=1f0EQ9pVc7R_Oy-2OYfqMg&edm=AOQ1c0wBAAAA&ccb=7-5&ig_cache_key=Mzg3MDY2ODc1MTM5NDA2MDcxMw%3D%3D.3-ccb7-5&oh=00_Af1xGulfddmB9oahrpkfu7kQ5oObuM-Zu6DAQwliTu7i8w&oe=69E43BA2&_nc_sid=8b3546" class="w-full h-full object-cover" alt="Race 6">
+            </div>
+            <div class="img-zoom reveal h-64 md:h-96">
+                <img src="https://instagram.fdet3-1.fna.fbcdn.net/v/t51.82787-15/658810302_18580887136053162_2040022569131793333_n.jpg?stp=dst-jpg_e15_tt6&_nc_ht=instagram.fdet3-1.fna.fbcdn.net&_nc_cat=106&_nc_oc=Q6cZ2gEs1tfbRH2AM2aliYxAX7BxFrMc01K5DTkp0LLK9wMKJSZ5J90HuMSn0Tdk4Gji9Og&_nc_ohc=KknxinHsO7YQ7kNvwGY6XcR&_nc_gid=1f0EQ9pVc7R_Oy-2OYfqMg&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_Af29GGylFggYbw-jnHTm63qthC-HbAWm8KSOiS5F6Z6Wyw&oe=69E43305&_nc_sid=8b3546" class="w-full h-full object-cover" alt="Race 7">
+            </div>
+            <div class="img-zoom reveal h-64 md:h-80">
+                <img src="https://instagram.fdet3-1.fna.fbcdn.net/v/t51.71878-15/658338443_965138439194506_2881596188813260795_n.jpg?stp=dst-jpg_e15_tt6&_nc_ht=instagram.fdet3-1.fna.fbcdn.net&_nc_cat=110&_nc_oc=Q6cZ2gEs1tfbRH2AM2aliYxAX7BxFrMc01K5DTkp0LLK9wMKJSZ5J90HuMSn0Tdk4Gji9Og&_nc_ohc=vKPwKexWjHEQ7kNvwFSIvui&_nc_gid=1f0EQ9pVc7R_Oy-2OYfqMg&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_Af3y-RtBoLBNGPXloU72gNffylm7D9xbQO7ku1TuLXyMlw&oe=69E443D4&_nc_sid=8b3546" class="w-full h-full object-cover" alt="Race 8">
+            </div>
+            <div class="img-zoom reveal h-64 md:h-64 md:col-span-2">
+                <img src="https://instagram.fdet3-1.fna.fbcdn.net/v/t51.71878-15/658775784_944988221252523_8401854042088238240_n.jpg?stp=dst-jpg_e15_tt6&_nc_ht=instagram.fdet3-1.fna.fbcdn.net&_nc_cat=103&_nc_oc=Q6cZ2gEs1tfbRH2AM2aliYxAX7BxFrMc01K5DTkp0LLK9wMKJSZ5J90HuMSn0Tdk4Gji9Og&_nc_ohc=m-HS9mux46kQ7kNvwGzgLCd&_nc_gid=1f0EQ9pVc7R_Oy-2OYfqMg&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_Af3iIITjxoyor3qhWk0SFbCmz1i-JElfUe1bvCIxkuc11A&oe=69E43603&_nc_sid=8b3546" class="w-full h-full object-cover" alt="Race 9">
+            </div>
+        </div>
+    </section>
+
+    <section id="proc-my" class="py-24 bg-accent">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-12 text-white">
+                <div class="reveal text-center">
+                    <div class="mb-6 flex justify-center text-white/50"><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i></div>
+                    <p class="text-xl font-medium italic mb-6">"RSV4 Factory je chirurgicky přesný nástroj. Na okruhu jsem nejel nic stabilnějšího."</p>
+                    <span class="font-bold uppercase tracking-widest text-sm">— Marek S., amatérský závodník</span>
+                </div>
+                <div class="reveal text-center" style="transition-delay: 100ms;">
+                    <div class="mb-6 flex justify-center text-white/50"><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i></div>
+                    <p class="text-xl font-medium italic mb-6">"Tuareg Rally mi otevřel cestu tam, kam jsem se dřív bál i podívat. Neuvěřitelný podvozek."</p>
+                    <span class="font-bold uppercase tracking-widest text-sm">— Jakub L., cestovatel</span>
+                </div>
+                <div class="reveal text-center" style="transition-delay: 200ms;">
+                    <div class="mb-6 flex justify-center text-white/50"><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i></div>
+                    <p class="text-xl font-medium italic mb-6">"SR GT 400 proměnil moji cestu do práce v nejlepší část dne. Ten odpich je návykový."</p>
+                    <span class="font-bold uppercase tracking-widest text-sm">— Petr M., městský jezdec</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 md:py-32 bg-dark relative overflow-hidden">
+        <div class="container mx-auto px-6 text-center relative z-10 reveal">
+            <h2 class="text-4xl md:text-6xl font-display font-extrabold mb-8 uppercase italic tracking-tighter">Přestaň snít, začni závodit.</h2>
+            <a href="#kontakt" class="inline-block bg-white text-dark px-12 py-5 rounded-2xl font-black hover:bg-accent hover:text-white transition-all transform hover:-rotate-2">
+                CHCI SVOU APRILII
+            </a>
+        </div>
+        <div class="absolute top-0 right-0 opacity-5 text-9xl font-display font-black pointer-events-none">RACING</div>
+        <div class="absolute bottom-0 left-0 opacity-5 text-9xl font-display font-black pointer-events-none">DNA</div>
+    </section>
+
+    <footer id="kontakt" class="py-24 border-t border-white/5 bg-black">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16">
+                <div class="reveal">
+                    <h2 class="text-3xl font-display font-bold mb-6 italic text-accent">NAVŠTIVTE NÁŠ SHOWROOM</h2>
+                    <p class="text-gray-400 mb-10 text-lg">Přijďte se posadit na svůj budoucí stroj. Naši experti vám pomohou vybrat tu pravou Aprilia DNA pro váš styl jízdy.</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4">
+                            <i data-lucide="map-pin" class="text-accent"></i>
+                            <span>Racing Avenue 12, 101 00 Praha</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <i data-lucide="phone" class="text-accent"></i>
+                            <span>+420 800 RACING (722 464)</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <i data-lucide="mail" class="text-accent"></i>
+                            <span>info@aprilia-racing.cz</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-10 flex gap-6">
+                        <a href="https://instagram.com/aprilia" target="_blank" class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-accent transition-all">
+                            <i data-lucide="instagram"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-accent transition-all">
+                            <i data-lucide="facebook"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-accent transition-all">
+                            <i data-lucide="youtube"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="reveal bg-neutral-900 p-8 rounded-3xl">
+                    <form id="contact-form" class="space-y-6">
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest font-bold mb-2 text-gray-500">Jméno a příjmení</label>
+                            <input type="text" required class="w-full bg-dark border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-accent transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest font-bold mb-2 text-gray-500">E-mail</label>
+                            <input type="email" required class="w-full bg-dark border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-accent transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest font-bold mb-2 text-gray-500">O který model máte zájem?</label>
+                            <select class="w-full bg-dark border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-accent transition-all appearance-none">
+                                <option>RSV4 Factory</option>
+                                <option>Tuono 457</option>
+                                <option>Tuareg Rally</option>
+                                <option>RS 457 Replica</option>
+                                <option>SR GT 400</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest font-bold mb-2 text-gray-500">Zpráva</label>
+                            <textarea rows="4" class="w-full bg-dark border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-accent transition-all"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-accent text-white font-bold py-4 rounded-xl hover:bg-red-700 transition-all uppercase tracking-widest">Odeslat poptávku</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-sm text-gray-600 gap-4">
+                <p>Copyright © 2026 Aprilia. All rights reserved.</p>
+                <p class="text-[10px] uppercase tracking-tighter italic">Web vytvořen pomocí AI</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+      // 1. Lucide ikony
+      lucide.createIcons();
+
+      // 2. Navbar: průhlednost → solid při scrollu
+      const navbar = document.getElementById('navbar');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          navbar.classList.add('bg-[#0A0A0A]', 'shadow-lg', 'border-b', 'border-white/10', 'py-3');
+          navbar.classList.remove('bg-transparent', 'py-4');
+        } else {
+          navbar.classList.remove('bg-[#0A0A0A]', 'shadow-lg', 'border-b', 'border-white/10', 'py-3');
+          navbar.classList.add('bg-transparent', 'py-4');
+        }
+      });
+
+      // 3. Reveal animace při scrollu
+      const revealEls = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(el => {
+          if (el.isIntersecting) { 
+            el.target.classList.add('visible'); 
+            observer.unobserve(el.target); 
+          }
+        });
+      }, { threshold: 0.12 });
+      revealEls.forEach(el => observer.observe(el));
+
+      // 4. Hamburger menu mobil
+      const menuBtn = document.getElementById('menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        mobileMenu.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+      }
+
+      // 5. Kontaktní formulář (preventDefault)
+      const form = document.getElementById('contact-form');
+      if (form) {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const btn = form.querySelector('button[type="submit"]');
+          if (btn) { 
+            btn.innerHTML = '<span class="flex items-center justify-center gap-2"><i data-lucide="check"></i> Zpráva odeslána!</span>'; 
+            lucide.createIcons();
+            btn.classList.replace('bg-accent', 'bg-green-600');
+            btn.disabled = true; 
+          }
+        });
+      }
+    </script>
+</body>
+</html>
